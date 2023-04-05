@@ -16,15 +16,15 @@ const routes = [
         meta:{transition:'anim'}
     },
     {
-        path: "/AddParent",
+        path: "/Parent",
         component: AddParent
     },
     {
-        path: "/AddTeacher",
+        path: "/Teacher",
         component: addTeacher
     },
     {
-        path: "/AddGrades",
+        path: "/Grades",
         component: addGuides
     },
     {

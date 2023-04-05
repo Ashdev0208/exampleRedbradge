@@ -1,23 +1,8 @@
-<script>
+<script setup>
 import { ref } from "vue"
+import { useRoute } from "vue-router";
+let route = ref(useRoute().path);
 
-export default {
-    setup() {
-        const tab = ref('Teacher');
-        return { tab }
-    },
-    mounted() {
-
-        const routerLinks = document.querySelectorAll('.nav-link');
-        routerLinks.forEach((el, index) => {
-            el.addEventListener("click", () => {
-                el.classList.remove("active");
-                routerLinks[index].classList.add("active");
-            })
-
-        })
-    }
-}
 </script>
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
@@ -33,21 +18,21 @@ export default {
                     <li class="nav-item navbar-brand px-3 rounded-1">#
                     </li>
                     <li class="nav-item">
-                        <router-link @click="tab = `Teacher`" to="/"
-                            class="nav-link first  px-3 rounded-1">Teacher</router-link>
+                        <router-link to="/" class="nav-link first  px-3 rounded-1"
+                            :class="`/` == route ? 'active' : ``">Teacher</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link @click="tab = `Grades`" to="/AddGrades"
-                            class="nav-link  px-3 rounded-1">Grades</router-link>
+                        <router-link to="/Grades" class="nav-link  px-3 rounded-1"
+                            :class="`/Grades` == route ? 'active' : ``">Grades</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link @click="tab = `Parents`" to="/AddParent"
-                            class="nav-link  px-3 rounded-1 ">Parents</router-link>
+                        <router-link to="/Parent" class="nav-link  px-3 rounded-1 "
+                            :class="'/Parent' == route ? `active` : ``">Parents</router-link>
                     </li>
                 </ul>
 
                 <button class="btn btn-dark" type="button">
-                    {{ tab }}
+                    {{ route == "/" ? "home and Teacher" : route.slice(1)}}
                 </button>
             </div>
         </div>

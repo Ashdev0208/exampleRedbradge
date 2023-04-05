@@ -8,7 +8,6 @@
         <transition >
           <div>
             <component :is="Component" />
-
           </div>
         </transition>
       </div>
